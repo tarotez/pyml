@@ -30,14 +30,14 @@ x_train = np.c_[np.linspace(dataMin, dataMax, data.shape[0])]
 y_train = np.c_[np.float_(data[:,12])]  # get temperature
 x_test = np.c_[np.linspace(dataMin, dataMax, testTimePointSamplingNum)]
 
-# Instanciate a Gaussian Process model
+# instanciate a Gaussian Process model
 kernel = ConstantKernel(1.0, (1e-3, 1e3)) * RBF(10, (1e-2, 1e2))
 gp = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=9)
 
-# Fit to data using Maximum Likelihood Estimation of the parameters
+# fit to data using Maximum Likelihood estimation of the parameters
 gp.fit(x_train, y_train)
 
-# Make the prediction on the meshed x-axis (ask for MSE as well)
+# make the prediction on the meshed x-axis (ask for MSE as well)
 y_pred, sigma = gp.predict(x_test, return_std=True)
 
 fig, ax = plt.subplots()
