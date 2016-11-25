@@ -6,11 +6,13 @@ import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import ConstantKernel, RBF
 
+# data read and visualization parameters
 offsetTimePoint = 100
 maxTimePoint = 96
 subsamplingSkip = 6
 testTimePointSamplingNum = 1000
 
+# read data
 datalist = []
 f = open('AirQualityUCI.csv', 'r')
 for line in f:
