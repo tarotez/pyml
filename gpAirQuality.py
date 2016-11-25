@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Gaussian process regression to Air Quality Data
+# Gaussian process regression to Air Quality Data in UCI-MLR
 
 import matplotlib.pyplot as plt
 import numpy as np
