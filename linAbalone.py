@@ -5,6 +5,7 @@ from sklearn import linear_model
 import matplotlib.pyplot as plt
 import numpy as np
 
+# read data
 datalist = []
 f = open('abalone.data', 'r')
 for line in f:
@@ -19,6 +20,7 @@ y = np.c_[np.float_(data[:,-1])]
 lr = linear_model.LinearRegression()
 lr.fit(x, y)
 
+# mesh for x_test
 x_test = np.linspace(x.min(), x.max(), 1000)
 
 predicted = lr.coef_[0] * x_test + lr.intercept_ * np.ones(x_test.shape)
