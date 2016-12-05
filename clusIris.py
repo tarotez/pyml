@@ -18,10 +18,15 @@ f.close()
 
 X = np.float_(np.array(datalist))
 
-clus_labels = KMeans(n_clusters=5).fit_predict(X)
+kres = KMeans(n_clusters=5)
+clus_labels = kres.fit_predict(X)
+
+clusCent = kres.cluster_centers_
 
 fig, ax = plt.subplots()
 ax.scatter(X[:, targetAttr[0]], X[:, targetAttr[1]], c=clus_labels, lw=0)
+
+ax.scatter(clusCent[:, targetAttr[0]], clusCent[:,targetAttr[1]], edgecolors="red", c="red", lw=10)
 
 ax.tick_params(axis='both', which='major', labelsize=18)
 ax.tick_params(axis='both', which='minor', labelsize=18)
