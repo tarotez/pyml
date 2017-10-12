@@ -1,2 +1,12 @@
+*.tsv
+.*
+!.gitignore
+log
+*.pkl
+*.ipynb
 *~
-\#*#
+__pycache__/*
+*.h5
+*.data
+*.png
+
