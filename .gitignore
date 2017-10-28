@@ -9,4 +9,6 @@ __pycache__/*
 *.h5
 *.data
 *.png
+*.csv
+*.txt
 
