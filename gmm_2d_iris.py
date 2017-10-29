@@ -5,10 +5,10 @@ import sklearn.mixture
 d = pd.read_csv('Iris.csv')
 sl = d['SepalLengthCm']
 pl = d['PetalLengthCm']
-data = np.transpose(np.array([sl, pl]))
+observed = np.transpose(np.array([sl, pl]))
 gmm = sklearn.mixture.GaussianMixture(n_components=3)
-gmm.fit(data)
-sampleNum = data.shape[0] * 5
+gmm.fit(observed)
+sampleNum = observed.shape[0] * 5
 g = gmm.sample(sampleNum)
 x = g[0]
 z = g[1]
