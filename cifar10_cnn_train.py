@@ -33,6 +33,7 @@ img_channels = 3
 
 # the data, shuffled and split between train and test sets
 (X_train, y_train), (X_test, y_test) = cifar10.load_data()
+
 print('X_train shape:', X_train.shape)
 print(X_train.shape[0], 'train samples')
 print(X_test.shape[0], 'test samples')
@@ -44,7 +45,7 @@ Y_test = np_utils.to_categorical(y_test, nb_classes)
 model = Sequential()
 
 model.add(Convolution2D(32, 3, 3, border_mode='same',
-                        input_shape=(img_channels, img_rows, img_cols)))
+                        input_shape=(img_rows, img_cols, img_channels)))
 model.add(Activation('relu'))
 model.add(Convolution2D(32, 3, 3))
 model.add(Activation('relu'))
@@ -115,4 +116,3 @@ model.save_weights('model_weights_cifar10_cnn.h5')
 json_string = model.to_json()
 with open('json_model_cifar10_cnn.pkl','wb') as f:
   pickle.dump(json_string, f)
-

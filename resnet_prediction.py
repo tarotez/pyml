@@ -15,3 +15,4 @@ preds = model.predict(x)
 # decode the results into a list of tuples (class, description, probability)
 # (one such list for each sample in the batch)
 print('Predicted:', decode_predictions(preds, top=3)[0])
+
