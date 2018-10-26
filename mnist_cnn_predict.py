@@ -22,7 +22,7 @@ model.load_weights('model_weights_mnist_cnn.h5')
 
 colorImg = Image.open(input_path,'r')
 grayImg = ImageOps.grayscale(colorImg)
-grayImg = ImageOps.invert(grayImg)
+# grayImg = ImageOps.invert(grayImg)
 a = np.asarray(grayImg)
 rows, cols = a.shape
 x_test = np.zeros((1,1,rows,cols))
