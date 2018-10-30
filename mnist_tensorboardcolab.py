@@ -20,7 +20,7 @@ np.random.seed(1337)  # for reproducibility
 
 batch_size = 128
 num_classes = 10
-epochs = 1
+epochs = 100
 
 tbc = TensorBoardColab()
 
