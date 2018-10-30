@@ -32,8 +32,11 @@ import tensorflow as tf
 
 from tensorflow.examples.tutorials.mnist import input_data
 
-FLAGS = None
+from tensorboardcolab import TensorBoardColab, TensorBoardColabCallback
 
+tbc = TensorBoardColab()
+
+FLAGS = None
 
 def train():
   # Import data

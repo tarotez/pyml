@@ -14,12 +14,15 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
+from tensorboardcolab import TensorBoardColab, TensorBoardColabCallback
 
 np.random.seed(1337)  # for reproducibility
 
 batch_size = 128
 num_classes = 10
 epochs = 1
+
+tbc = TensorBoardColab()
 
 # input image dimensions
 img_rows, img_cols = 28, 28
