@@ -1,0 +1,620 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 112,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/Users/tez/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/matplotlib/figure.py:1342: UserWarning: sharex argument to subplots() was an integer. Did you intend to use subplot() (without 's')?\n",
+      "  \"sharex argument to subplots() was an integer. \"\n"
+     ]
+    },
+    {
+     "ename": "ValueError",
+     "evalue": "sharex [0] must be one of ['all', 'row', 'col', 'none']",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-112-c18c50e7501f>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     62\u001b[0m \u001b[0mclusterCenters\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0minitializeClusters\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msamples\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mclusterNum\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     63\u001b[0m \u001b[0minitial_assignments\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0marray\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mi\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mrange\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msamples\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshape\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 64\u001b[0;31m \u001b[0mdrawScatter\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msamples\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0minitial_assignments\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mclusterCenters\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'Iteration 0, randomly placed clusters.'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     65\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mi\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mrange\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0miterationNum\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     66\u001b[0m     \u001b[0massignments\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0massignToClosest\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msamples\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mclusterCenters\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m<ipython-input-112-c18c50e7501f>\u001b[0m in \u001b[0;36mdrawScatter\u001b[0;34m(plotID, samples, assignments, clusterCenters, title)\u001b[0m\n\u001b[1;32m     48\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     49\u001b[0m \u001b[0;32mdef\u001b[0m \u001b[0mdrawScatter\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mplotID\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msamples\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0massignments\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mclusterCenters\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtitle\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 50\u001b[0;31m     \u001b[0mfig\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0max\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mplt\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msubplots\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0miterationNum\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0;36m1\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mplotID\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     51\u001b[0m     \u001b[0max\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mscatter\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msamples\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msamples\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mc\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0massignments\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mlw\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     52\u001b[0m     \u001b[0mclusterCentersArray\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0marray\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mclusterCenters\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/matplotlib/pyplot.py\u001b[0m in \u001b[0;36msubplots\u001b[0;34m(nrows, ncols, sharex, sharey, squeeze, subplot_kw, gridspec_kw, **fig_kw)\u001b[0m\n\u001b[1;32m   1185\u001b[0m     axs = fig.subplots(nrows=nrows, ncols=ncols, sharex=sharex, sharey=sharey,\n\u001b[1;32m   1186\u001b[0m                        \u001b[0msqueeze\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0msqueeze\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0msubplot_kw\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0msubplot_kw\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 1187\u001b[0;31m                        gridspec_kw=gridspec_kw)\n\u001b[0m\u001b[1;32m   1188\u001b[0m     \u001b[0;32mreturn\u001b[0m \u001b[0mfig\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0maxs\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1189\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/matplotlib/figure.py\u001b[0m in \u001b[0;36msubplots\u001b[0;34m(self, nrows, ncols, sharex, sharey, squeeze, subplot_kw, gridspec_kw)\u001b[0m\n\u001b[1;32m   1344\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1345\u001b[0m             raise ValueError(\"sharex [%s] must be one of %s\" %\n\u001b[0;32m-> 1346\u001b[0;31m                              (sharex, share_values))\n\u001b[0m\u001b[1;32m   1347\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0msharey\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mshare_values\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   1348\u001b[0m             raise ValueError(\"sharey [%s] must be one of %s\" %\n",
+      "\u001b[0;31mValueError\u001b[0m: sharex [0] must be one of ['all', 'row', 'col', 'none']"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "<Figure size 432x288 with 0 Axes>"
+      ]
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "clusterNum = 3\n",
+    "iterationNum = 5\n",
+    "\n",
+    "attrNames = [\"sepal length\", \"sepal width\", \"petal length\", \"petal width\"]\n",
+    "targetAttr = [0,2]\n",
+    "\n",
+    "datalist = []\n",
+    "f = open('iris.data', 'r')\n",
+    "for line in f:\n",
+    "    line = line.rstrip()\n",
+    "    elems = line.split(',')\n",
+    "    if len(elems) > 1:\n",
+    "      datalist.append(elems[:-1])\n",
+    "f.close()\n",
+    "\n",
+    "X = np.float_(np.array(datalist))\n",
+    "samples = X[:,targetAttr]\n",
+    "minVec = np.min(X,axis=0)\n",
+    "maxVec = np.max(X,axis=0)\n",
+    "\n",
+    "def initializeClusters(samples, clusterNum):\n",
+    "    maxVec = np.max(samples,axis=0)\n",
+    "    minVec = np.min(samples,axis=0)\n",
+    "    clusterCenters = []\n",
+    "    for clusterID in range(clusterNum):\n",
+    "        clusterCenters.append(np.array([np.random.uniform(minVal,maxVal) for minVal, maxVal in zip(minVec, maxVec)]))        \n",
+    "    return clusterCenters\n",
+    "\n",
+    "def updateClusterCenters(samples, assignments, clusterNum):\n",
+    "    clusterCenters = []\n",
+    "    for clusterID in range(clusterNum):\n",
+    "        sampleList = []\n",
+    "        for sampleID, sample in enumerate(samples):\n",
+    "            if assignments[sampleID] == clusterID:\n",
+    "                sampleList.append(sample)\n",
+    "        clusterCenters.append(np.mean(np.array(sampleList), axis=0))\n",
+    "    return clusterCenters\n",
+    "\n",
+    "def assignToClosest(samples, clusterCenters):\n",
+    "    assignments = []\n",
+    "    for sample in samples:\n",
+    "        closestClusterID = np.argmin([np.linalg.norm(sample - clusterCenter) for clusterCenter in clusterCenters])\n",
+    "        assignments.append(closestClusterID)\n",
+    "    return assignments\n",
+    "\n",
+    "def drawScatter(plotID, samples, assignments, clusterCenters, title):\n",
+    "    fig, ax = plt.subplots(0, iterationNum + 1, plotID)\n",
+    "    ax.scatter(samples[:,0], samples[:,1], c=assignments, lw=0)\n",
+    "    clusterCentersArray = np.array(clusterCenters)\n",
+    "    clusterNum = len(clusterCenters)\n",
+    "    ax.scatter(clusterCentersArray[:,0], clusterCentersArray[:,1], edgecolors=\"red\", c=[i for i in range(clusterNum)], s=300, lw=3)\n",
+    "    ax.tick_params(axis='both', which='major', labelsize=18)\n",
+    "    ax.tick_params(axis='both', which='minor', labelsize=18)\n",
+    "    ax.set_title(title)\n",
+    "    ax.set_xlabel(attrNames[targetAttr[0]], fontsize=18)\n",
+    "    ax.set_ylabel(attrNames[targetAttr[1]], fontsize=18)\n",
+    "    plt.show()\n",
+    "\n",
+    "clusterCenters = initializeClusters(samples, clusterNum)\n",
+    "initial_assignments = np.array([0 for i in range(samples.shape[0])])\n",
+    "drawScatter(0, samples, initial_assignments, clusterCenters, 'Iteration 0, randomly placed clusters.')\n",
+    "for i in range(iterationNum):\n",
+    "    assignments = assignToClosest(samples, clusterCenters)\n",
+    "    drawScatter(i+1, samples, assignments, clusterCenters, 'Iterattion ' + str(i+1) + ', after assignment of labels.')\n",
+    "    clusterCenters = updateClusterCenters(samples, assignments, clusterNum)\n",
+    "    drawScatter(i+1, samples, assignments, clusterCenters, 'Iteration ' + str(i+1) + ', after updating cluster locations.')\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 82,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[5.109842685446815,\n",
+       " 5.381507013669328,\n",
+       " 6.952617135641969,\n",
+       " 5.949342586645238,\n",
+       " 5.706733056594274,\n",
+       " 6.837254263623491,\n",
+       " 6.444508536845035,\n",
+       " 5.978172414527596,\n",
+       " 6.888358632690601,\n",
+       " 6.726428272820952]"
+      ]
+     },
+     "execution_count": 82,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[np.random.uniform(5,7) for i in range(10)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 79,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "assignments = []\n",
+    "for sampleID, sample in enumerate(samples):\n",
+    "    closestCluster = np.argmin([sample - clusterCenter for clusterCenter in clusterCenters])\n",
+    "    assignments.append(closestCluster == 1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 80,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False]"
+      ]
+     },
+     "execution_count": 80,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "assignments"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 81,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/Users/tez/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2920: RuntimeWarning: Mean of empty slice.\n",
+      "  out=out, **kwargs)\n",
+      "/Users/tez/.pyenv/versions/anaconda3-5.3.1/lib/python3.7/site-packages/numpy/core/_methods.py:85: RuntimeWarning: invalid value encountered in double_scalars\n",
+      "  ret = ret.dtype.type(ret / rcount)\n"
+     ]
+    }
+   ],
+   "source": [
+    "clusterCenters = []\n",
+    "for clusterID in range(clusterNum):\n",
+    "    sampleList = []\n",
+    "    for sampleID, sample in enumerate(samples):\n",
+    "        if assignments[sampleID] == clusterID:\n",
+    "            sampleList.append(sample)\n",
+    "    clusterCenters.append(np.mean(np.array(sampleList), axis=0))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 49,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False,\n",
+       " False]"
+      ]
+     },
+     "execution_count": 49,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "assignments"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[array([5.84333333, 3.75866667]), nan, nan]"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "clusterCenters"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 40,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "assignments = []\n",
+    "for sampleID, sample in enumerate(samples):\n",
+    "    closestCluster = [np.argmin([sample - clusterCenter]) for clusterCenter in clusterCenters]    \n",
+    "\n",
+    "    assignments.append(closestCluster == 1)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 43,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([5.9, 5.1])"
+      ]
+     },
+     "execution_count": 43,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "sample"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([array([5.84333333, 3.75866667]), nan, nan], dtype=object)"
+      ]
+     },
+     "execution_count": 45,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "clusterCenters"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.0"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
