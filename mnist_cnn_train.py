@@ -14,6 +14,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
+import tensorboardcolab as tb
 
 np.random.seed(1337)  # for reproducibility
 
@@ -69,7 +70,7 @@ model.fit(x_train, y_train,
           epochs=epochs,
           verbose=1,
           validation_data=(x_test, y_test),
-          callbacks=[TensorBoardColabCallback(tbc)])
+          callbacks=[tb.TensorBoardColabCallback(tbc)])
 
 # save the model and its weights
 model.save_weights('model_weights_mnist_cnn.h5')
