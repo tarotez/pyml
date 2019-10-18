@@ -5,4 +5,4 @@ from keras.datasets import cifar10
 imgs = []
 i = 5
 a = X_train[i,:,:,:]
-Image.fromarray(np.uint8(a))
+img = Image.fromarray(np.uint8(a))
