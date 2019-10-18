@@ -70,7 +70,7 @@ model.fit(x_train, y_train,
           epochs=epochs,
           verbose=1,
           validation_data=(x_test, y_test),
-          callbacks=[tb.TensorBoardColabCallback(tbc)])
+          callbacks=[tb.TensorBoardColabCallback()])
 
 # save the model and its weights
 model.save_weights('model_weights_mnist_cnn.h5')
