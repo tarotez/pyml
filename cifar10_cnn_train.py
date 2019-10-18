@@ -24,7 +24,7 @@ import pickle
 batch_size = 32
 nb_classes = 10
 nb_epoch = 1
-data_augmentation = True
+data_augmentation = False
 
 # input image dimensions
 img_rows, img_cols = 32, 32
