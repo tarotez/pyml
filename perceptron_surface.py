@@ -17,8 +17,8 @@ w = (0.1, 0.3, -20)
 ax.set_xlabel('Report score', size=10)
 ax.set_ylabel('Test score', size=10)
 
-t0 = np.linspace(0,100,1001)
-t1 = np.linspace(0,100,1001)
+t0 = np.linspace(0,100,101)
+t1 = np.linspace(0,100,101)
 
 g0, g1 = np.meshgrid(t0, t1)
 activation = w[0] * g0 + w[1] * g1 + w[2]
