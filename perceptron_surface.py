@@ -21,7 +21,8 @@ t0 = np.linspace(0,100,1001)
 t1 = np.linspace(0,100,1001)
 
 g0, g1 = np.meshgrid(t0, t1)
-g2 = sigmoid(w[0] * g0 + w[1] * g1 + w[2])
+activation = w[0] * g0 + w[1] * g1 + w[2]
+g2 = sigmoid(activation)
 
 # Plot the surface.
 surf = ax.plot_surface(g0, g1, g2, cmap=cm.coolwarm_r, linewidth=0, antialiased=False)
