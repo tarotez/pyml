@@ -20,11 +20,11 @@ ax.set_ylabel('Test score', size=10)
 t0 = np.linspace(0,100,1001)
 t1 = np.linspace(0,100,1001)
 
-a0, a1 = np.meshgrid(t0, t1)
-a2 = sigmoid(w[0] * a0 + w[1] * a1 + w[2])
+g0, g1 = np.meshgrid(t0, t1)
+g2 = sigmoid(w[0] * g0 + w[1] * g1 + w[2])
 
 # Plot the surface.
-surf = ax.plot_surface(a0, a1, a2, cmap=cm.coolwarm_r, linewidth=0, antialiased=False)
+surf = ax.plot_surface(g0, g1, g2, cmap=cm.coolwarm_r, linewidth=0, antialiased=False)
 
 # Add a color bar which maps values to colors.
 fig.colorbar(surf, shrink=0.5, aspect=5)
