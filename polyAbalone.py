@@ -22,13 +22,11 @@ X = np.hstack((x, np.power(x,2)))
 
 lr.fit(X, y)
 
-x_test = np.linspace(x.min(), x.max(), 1000)
-
-predicted = lr.coef_[0,1] * np.power(x_test,2) + lr.coef_[0,0] * x_test + lr.intercept_ * np.ones(x_test.shape)
+predicted = lr.coef_[0,1] * np.power(x,2) + lr.coef_[0,0] * x + lr.intercept_ * np.ones(x.shape)
 
 fig, ax = plt.subplots()
 ax.scatter(x, y, c='red', marker='o', label='observed', lw=0)
-ax.scatter(x_test, predicted, c='blue', marker='o', label='predicted', lw=0)
+ax.scatter(x, predicted, c='blue', marker='o', label='predicted', lw=0)
 
 ax.tick_params(axis='both', which='major', labelsize=18)
 ax.tick_params(axis='both', which='minor', labelsize=18)
