@@ -26,7 +26,7 @@ ax.set_xlabel('Year')
 ax.set_ylabel('Temperature')
 
 fig, ax = plt.subplots()
-year_with_future_test = np.linspace(year.min(), year.max() + (year.max() - year.min()), 500)
+year_with_future_test = np.linspace(year.min(), year.max() + (year.max() - year.min()), len(year))
 temperature_with_future_predict = lr.predict(year_with_future_test.reshape((-1,1)))
 ax.scatter(year, temperature, label='measurement', c='b', marker='.', s=5)
 ax.scatter(year_with_future_test, temperature_with_future_predict, c='red', marker='.', s=10, label='interpolation and extrapolation')
