@@ -9,7 +9,7 @@ year = np.array([int(e.split('-')[0]) for e in date])
 temperature = d['LandAverageTemperature'][offset::12]
 lr = linear_model.LinearRegression()
 lr.fit(year.reshape((-1,1)), temperature.values)
-year_test = np.linspace(year.min(), year.max(), 500)
+year_test = np.linspace(year.min(), year.max(), len(year))
 temperature_predict = lr.predict(year_test.reshape((-1,1)))
 
 fig, ax = plt.subplots()
