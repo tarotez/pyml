@@ -13,8 +13,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 latent_size = 64
 hidden_size = 256
 image_size = 784
-num_epochs = 200
-# num_epochs = 20
+# num_epochs = 200
+num_epochs = 10
 batch_size = 100
 sample_dir = 'gan_samples'
 
