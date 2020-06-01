@@ -6,8 +6,8 @@ d = pd.read_csv('2017.csv')
 happiness = d['Happiness.Score']
 gdp = d['Economy..GDP.per.Capita.']
 japanID = 50
-jhappiness = d.ix[japanID,'Happiness.Score']
-jgdp = d.ix[japanID, 'Economy..GDP.per.Capita.']
+jhappiness = d.loc[japanID,'Happiness.Score']
+jgdp = d.loc[japanID, 'Economy..GDP.per.Capita.']
 lr = linear_model.LinearRegression()
 lr.fit(gdp.values.reshape((-1,1)), happiness.values)
 gdp_test = np.linspace(gdp.min(), gdp.max(), 10000)
