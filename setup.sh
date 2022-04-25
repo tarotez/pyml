@@ -1,15 +1,19 @@
-#! /bin/sh
+#!/bin/sh
+
+mkdir -p data
 
 # Abalone
-wget https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data
-wget https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names
+wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data -P data
+wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names -P data
 
 # Iris
-wget https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
-wget https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.names
+wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data -P data
+wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.names -P data
 
 # AirQuality
-wget https://archive.ics.uci.edu/ml/machine-learning-databases/00360/AirQualityUCI.zip
-unzip AirQualityUCI.zip
-rm AirQualityUCI.zip
-rm AirQualityUCI.xlsx
+if ! [ -f data/AirQualityUCI.* ]; then
+  wget https://archive.ics.uci.edu/ml/machine-learning-databases/00360/AirQualityUCI.zip
+  unzip AirQualityUCI.zip -d data
+  rm AirQualityUCI.zip
+  rm data/AirQualityUCI.xlsx
+fi
