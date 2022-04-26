@@ -1,5 +1,6 @@
 keras
 matplotlib
+notebook
 numpy
 six
 sklearn
