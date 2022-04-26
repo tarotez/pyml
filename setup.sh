@@ -7,7 +7,7 @@ wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalo
 
 # Iris
 wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data -P data
-wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.names -P data
+# wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.names -P data
 
 # AirQuality
 if ! [ -f data/AirQualityUCI.* ]; then
