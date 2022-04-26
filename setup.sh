@@ -4,7 +4,6 @@ mkdir -p data
 
 # Abalone
 wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.data -P data
-wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/abalone/abalone.names -P data
 
 # Iris
 wget -nc https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data -P data
