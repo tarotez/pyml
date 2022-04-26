@@ -1,9 +1,14 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn import linear_model
 
-d = pd.read_csv("GlobalTemperatures.csv")
+data_path = os.path.join(
+    os.path.dirname(__file__), "..", "data", "GlobalTemperatures.csv"
+)
+d = pd.read_csv(data_path)
 offset = 100
 date = d["dt"][offset::12]
 year = np.array([int(e.split("-")[0]) for e in date])

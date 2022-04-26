@@ -1,9 +1,12 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import sklearn.mixture
 
-d = pd.read_csv("Iris.csv")
+data_path = os.path.join(os.path.dirname(__file__), "..", "data", "Iris.csv")
+d = pd.read_csv(data_path)
 sl = d["SepalLengthCm"]
 pl = d["PetalLengthCm"]
 observed = np.transpose(np.array([sl, pl]))
