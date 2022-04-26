@@ -1,9 +1,12 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn import linear_model
 
-d = pd.read_csv("winequality-red.csv", sep=";")
+data_path = os.path.join(os.path.dirname(__file__), "..", "data", "winequality-red.csv")
+d = pd.read_csv(data_path, sep=";")
 indep_var_labels = ["fixed acidity"]
 indep_targetID = 0
 dep_var_label = "quality"

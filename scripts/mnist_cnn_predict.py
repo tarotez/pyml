@@ -1,6 +1,5 @@
 """Predicts using a simple convnet on the MNIST dataset.
 """
-from __future__ import print_function
 
 import os
 import pickle
@@ -18,7 +17,7 @@ from keras.models import Sequential, model_from_json
 from keras.utils import np_utils
 from PIL import Image, ImageOps
 
-input_path = "number.png"
+input_path = os.path.join(os.path.dirname(__file__), "..", "data", "number.png")
 
 with open("json_model_mnist_cnn.pkl", "rb") as f:
     json_string = pickle.load(f)
