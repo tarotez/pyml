@@ -2,9 +2,8 @@
 import gzip
 import sys
 
-from six.moves import cPickle
-
 from data_utils import get_file
+from six.moves import cPickle
 
 
 def load_data(path="mnist.pkl.gz"):

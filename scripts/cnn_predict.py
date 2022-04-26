@@ -7,8 +7,14 @@ import os
 import pickle
 
 import numpy as np
-from keras.layers import (Activation, Convolution2D, Dense, Dropout, Flatten,
-                          MaxPooling2D)
+from keras.layers import (
+    Activation,
+    Convolution2D,
+    Dense,
+    Dropout,
+    Flatten,
+    MaxPooling2D,
+)
 from keras.models import Sequential, model_from_json
 from keras.utils import np_utils
 

@@ -7,14 +7,19 @@ import os
 import pickle
 
 import numpy as np
+from image_to_array import image2array
 from keras import backend as K
-from keras.layers import (Activation, Convolution2D, Dense, Dropout, Flatten,
-                          MaxPooling2D)
+from keras.layers import (
+    Activation,
+    Convolution2D,
+    Dense,
+    Dropout,
+    Flatten,
+    MaxPooling2D,
+)
 from keras.models import Sequential, model_from_json
 from keras.utils import np_utils
 from matplotlib import pyplot as plt
-
-from image_to_array import image2array
 
 with open("json_model_face_cnn.pkl", "rb") as f:
     json_string = pickle.load(f)

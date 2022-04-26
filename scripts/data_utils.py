@@ -5,10 +5,9 @@ import shutil
 import sys
 import tarfile
 
+from generic_utils import Progbar
 from six.moves.urllib.error import HTTPError, URLError
 from six.moves.urllib.request import urlopen
-
-from generic_utils import Progbar
 
 # Under Python 2, 'urlretrieve' relies on FancyURLopener from legacy
 # urllib module, known to have issues with proxy management

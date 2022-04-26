@@ -14,8 +14,14 @@ import os
 import pickle
 
 from keras.datasets import mnist
-from keras.layers import (Activation, Convolution2D, Dense, Dropout, Flatten,
-                          MaxPooling2D)
+from keras.layers import (
+    Activation,
+    Convolution2D,
+    Dense,
+    Dropout,
+    Flatten,
+    MaxPooling2D,
+)
 from keras.models import Sequential
 from keras.utils import np_utils
 from PIL import Image, ImageOps

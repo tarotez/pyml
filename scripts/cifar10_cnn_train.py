@@ -16,8 +16,14 @@ from __future__ import print_function
 import pickle
 
 from keras.datasets import cifar10
-from keras.layers import (Activation, Convolution2D, Dense, Dropout, Flatten,
-                          MaxPooling2D)
+from keras.layers import (
+    Activation,
+    Convolution2D,
+    Dense,
+    Dropout,
+    Flatten,
+    MaxPooling2D,
+)
 from keras.models import Sequential
 from keras.optimizers import SGD
 from keras.preprocessing.image import ImageDataGenerator

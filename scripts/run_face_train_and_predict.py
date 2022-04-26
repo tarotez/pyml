@@ -1,11 +1,10 @@
 import math
 
 import numpy as np
-from keras.utils import np_utils
-
 from cnn_predict import predict
 from cnn_train import train
 from image_to_array import image2array
+from keras.utils import np_utils
 
 # np.random.seed(1337)  # for reproducibility
 

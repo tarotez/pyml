@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # Gaussian process regression to Air Quality Data in UCI-MLR
 
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.gaussian_process import GaussianProcessRegressor
@@ -13,8 +15,10 @@ subsamplingSkip = 6
 testTimePointSamplingNum = 1000
 
 # read data
+data_path = os.path.join(__file__, "..", "data", "AirQualityUCI.csv")
+
 datalist = []
-f = open("AirQualityUCI.csv", "r")
+f = open(data_path, "r")
 for line in f:
     line = line.rstrip()
     line = line.replace(",", ".")

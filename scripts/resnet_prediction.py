@@ -1,6 +1,5 @@
 import numpy as np
-from keras.applications.resnet50 import (ResNet50, decode_predictions,
-                                         preprocess_input)
+from keras.applications.resnet50 import ResNet50, decode_predictions, preprocess_input
 from keras.preprocessing import image
 
 model = ResNet50(weights="imagenet")
