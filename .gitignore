@@ -3,6 +3,7 @@ backup*
 *.tsv
 .*
 !.gitignore
+!.pre-commit-config.yaml
 log
 *.pkl
 *.ipynb
@@ -13,5 +14,6 @@ __pycache__/*
 *.png
 *.csv
 *.txt
+!requirements.txt
 *.jpg
 *.png

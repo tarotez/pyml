@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 # linear regression to abalone data
 
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import linear_model
 
 # read data
+data_path = os.path.join(os.path.dirname(__file__), "..", "data", "abalone.data")
+
 datalist = []
-f = open("abalone.data", "r")
+f = open(data_path)
 for line in f:
     line = line.rstrip()
     elems = line.split(",")

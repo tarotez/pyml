@@ -15,10 +15,10 @@ subsamplingSkip = 6
 testTimePointSamplingNum = 1000
 
 # read data
-data_path = os.path.join(__file__, "..", "data", "AirQualityUCI.csv")
+data_path = os.path.join(os.path.dirname(__file__), "..", "data", "AirQualityUCI.csv")
 
 datalist = []
-f = open(data_path, "r")
+f = open(data_path)
 for line in f:
     line = line.rstrip()
     line = line.replace(",", ".")
@@ -36,7 +36,7 @@ x_train = np.c_[np.linspace(dataMin, dataMax, data.shape[0])]
 y_train = np.c_[np.float_(data[:, 12])]  # get temperature
 x_test = np.c_[np.linspace(dataMin, dataMax, testTimePointSamplingNum)]
 
-# instanciate a Gaussian Process model
+# instantiate a Gaussian Process model
 kernel = ConstantKernel(1.0, (1e-3, 1e3)) * RBF(10, (1e-2, 1e2))
 gp = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=9)
 
