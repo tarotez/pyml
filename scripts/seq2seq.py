@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import numpy as np
 from keras.layers import LSTM, Dense, Input
 from keras.models import Model
@@ -16,7 +14,7 @@ input_texts = []
 target_texts = []
 input_characters = set()
 target_characters = set()
-with open(data_path, "r", encoding="utf-8") as f:
+with open(data_path, encoding="utf-8") as f:
     lines = f.read().split("\n")
 for line in lines[: min(num_samples, len(lines) - 1)]:
     # print(line,end='')
@@ -37,8 +35,8 @@ input_characters = sorted(list(input_characters))
 target_characters = sorted(list(target_characters))
 num_encoder_tokens = len(input_characters)
 num_decoder_tokens = len(target_characters)
-max_encoder_seq_length = max([len(txt) for txt in input_texts])
-max_decoder_seq_length = max([len(txt) for txt in target_texts])
+max_encoder_seq_length = max(len(txt) for txt in input_texts)
+max_decoder_seq_length = max(len(txt) for txt in target_texts)
 
 print("Number of samples:", len(input_texts))
 print("Number of unique input tokens:", num_encoder_tokens)
@@ -46,8 +44,8 @@ print("Number of unique output tokens:", num_decoder_tokens)
 print("Max sequence length for inputs:", max_encoder_seq_length)
 print("Max sequence length for outputs:", max_decoder_seq_length)
 
-input_token_index = dict([(char, i) for i, char in enumerate(input_characters)])
-target_token_index = dict([(char, i) for i, char in enumerate(target_characters)])
+input_token_index = {char: i for i, char in enumerate(input_characters)}
+target_token_index = {char: i for i, char in enumerate(target_characters)}
 
 encoder_input_data = np.zeros(
     (len(input_texts), max_encoder_seq_length, num_encoder_tokens), dtype="float32"
@@ -132,8 +130,8 @@ decoder_model = Model(
 
 # Reverse-lookup token index to decode sequences back to
 # something readable.
-reverse_input_char_index = dict((i, char) for char, i in input_token_index.items())
-reverse_target_char_index = dict((i, char) for char, i in target_token_index.items())
+reverse_input_char_index = {i: char for char, i in input_token_index.items()}
+reverse_target_char_index = {i: char for char, i in target_token_index.items()}
 
 
 def decode_sequence(input_seq):

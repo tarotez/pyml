@@ -4,7 +4,7 @@ import numpy as np
 sampleNum = 10000
 timeLength = 100
 binNum = 50
-loc = np.zeros((sampleNum))
+loc = np.zeros(sampleNum)
 for i in range(sampleNum):
     x = 0
     for t in range(timeLength):

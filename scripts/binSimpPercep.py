@@ -14,7 +14,7 @@ le.fit(categoryLabels)
 
 datalist = []
 depVar = []
-f = open("iris.data", "r")
+f = open("iris.data")
 for line in f:
     line = line.rstrip()
     elems = line.split(",")

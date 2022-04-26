@@ -8,7 +8,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 # read data
 datalist = []
-f = open("../datasets/adult.data", "r")
+f = open("../datasets/adult.data")
 sampleNum = 0
 for line in f:
     line = line.rstrip()

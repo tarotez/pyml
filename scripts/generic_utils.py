@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import sys
 import time
 
@@ -10,7 +8,7 @@ import six
 def get_from_module(
     identifier, module_params, module_name, instantiate=False, kwargs=None
 ):
-    if isinstance(identifier, six.string_types):
+    if isinstance(identifier, str):
         res = module_params.get(identifier)
         if not res:
             raise Exception("Invalid " + str(module_name) + ": " + str(identifier))
@@ -34,7 +32,7 @@ def make_tuple(*args):
     return args
 
 
-class Progbar(object):
+class Progbar:
     def __init__(self, target, width=30, verbose=1, interval=0.01):
         """
         @param target: total number of steps expected

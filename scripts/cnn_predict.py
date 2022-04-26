@@ -1,7 +1,6 @@
 """Predicts using a simple convnet on the MNIST dataset.
 """
 
-from __future__ import print_function
 
 import os
 import pickle

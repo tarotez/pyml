@@ -11,7 +11,6 @@ from loading it in Python 3. You might have to load it in Python 2,
 save it in a different format, load it in Python 3 and repickle it.
 """
 
-from __future__ import print_function
 
 import pickle
 

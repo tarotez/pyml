@@ -8,7 +8,7 @@ attrNames = ["sepal length", "sepal width", "petal length", "petal width"]
 targetAttr = [0, 2]
 
 datalist = []
-f = open("iris.data", "r")
+f = open("iris.data")
 for line in f:
     line = line.rstrip()
     elems = line.split(",")

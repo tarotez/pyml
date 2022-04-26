@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import argparse
 import time
 
@@ -113,7 +111,7 @@ model = vgg19.VGG19(input_tensor=input_tensor, weights="imagenet", include_top=F
 print("Model loaded.")
 
 # get the symbolic outputs of each "key" layer (we gave them unique names).
-outputs_dict = dict([(layer.name, layer.output) for layer in model.layers])
+outputs_dict = {layer.name: layer.output for layer in model.layers}
 
 # compute the neural style loss
 # first we need to define 4 util functions
@@ -236,7 +234,7 @@ def eval_loss_and_grads(x):
 # but computing them separately would be inefficient.
 
 
-class Evaluator(object):
+class Evaluator:
     def __init__(self):
         self.loss_value = None
         self.grads_values = None

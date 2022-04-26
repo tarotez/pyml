@@ -20,7 +20,6 @@ naming summary tags so that they are grouped meaningfully in TensorBoard.
 
 It demonstrates the functionality of every TensorBoard dashboard.
 """
-from __future__ import absolute_import, division, print_function
 
 import argparse
 import os
@@ -157,7 +156,7 @@ def train():
         if i % 10 == 0:  # Record summaries and test-set accuracy
             summary, acc = sess.run([merged, accuracy], feed_dict=feed_dict(False))
             test_writer.add_summary(summary, i)
-            print("Accuracy at step %s: %s" % (i, acc))
+            print(f"Accuracy at step {i}: {acc}")
         else:  # Record train set summaries, and train
             if i % 100 == 99:  # Record execution stats
                 run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)

@@ -159,7 +159,7 @@ for epoch in range(num_epochs):
     fake_images = fake_images.reshape(fake_images.size(0), 1, 28, 28)
     save_image(
         denorm(fake_images),
-        os.path.join(sample_dir, "fake_images-{}.png".format(epoch + 1)),
+        os.path.join(sample_dir, f"fake_images-{epoch + 1}.png"),
     )
 
 # Save the model checkpoints

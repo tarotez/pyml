@@ -1,5 +1,4 @@
 # copy image to an array (sampleNum, channelNum, img_rows, img_cols)
-from __future__ import print_function
 
 import os
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import gzip
 import sys
 
@@ -14,10 +13,7 @@ def load_data(path="mnist.pkl.gz"):
     else:
         f = open(path, "rb")
 
-    if sys.version_info < (3,):
-        data = cPickle.load(f)
-    else:
-        data = cPickle.load(f, encoding="bytes")
+    data = cPickle.load(f, encoding="bytes")
 
     f.close()
     return data  # (X_train, y_train), (X_test, y_test)
